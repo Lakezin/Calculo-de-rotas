@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa com Rotas</title>
+
+  
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+  <div class="painel">
+    <h2>Pontos</h2>
+
+    <ul id="lista-pontos"></ul>
+
+    <h3>Criar ponto</h3>
+    <input type="text" id="nomePonto" placeholder="Nome do local">
+    <input type="text" id="idPonto" placeholder="ID do ponto (ex: E)">
+    <input type="text" id="latPonto" placeholder="Latitude" readonly>
+    <input type="text" id="lngPonto" placeholder="Longitude" readonly>
+    <button onclick="criarPonto()">Adicionar ponto</button>
+    <p>Clique no mapa para escolher a posição do novo ponto.</p>
+
+    <h3>Excluir ponto</h3>
+    <select id="removerPonto"></select>
+    <button onclick="excluirPonto()">Excluir ponto</button>
+
+    <p id="resultado"></p>
+  </div>
+
+  <div id="map"></div>
+</div>
+    <div id="map" style="height:1300px;"></div>
+  <h2>Mapa com Rotas</h2>
+
+  <div id="map"></div>
+
+  <p id="resultado"></p>
+    <script src="index.js"></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClItPnq8LnIJOK8lPZ_BJ-Y8ZzOkpSaLc&callback=initMap">
+  </script>
+
+</body>
+</html>

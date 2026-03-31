@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.painel {
+  width: 320px;
+  padding: 20px;
+  background: #f4f4f4;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+#map {
+  flex: 1;
+  height: 100vh;
+}
+
+input, select, button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+#resultado {
+  margin-top: 20px;
+  font-weight: bold;
+}

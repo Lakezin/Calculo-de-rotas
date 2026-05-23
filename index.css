@@ -32,7 +32,7 @@ body {
 }
 
 .painel {
-  width: 320px;
+  width: 321px;
   min-width: 320px;
   background: var(--painel-bg);
   border-right: 1px solid var(--borda);

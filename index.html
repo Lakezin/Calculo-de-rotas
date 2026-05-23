@@ -1,46 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Mapa com Rotas</title>
-
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculador de Rotas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="container">
-  <div class="painel">
-    <h2>Pontos</h2>
+  <div class="container">
+    <aside class="painel">
+      <div class="painel-header">
+        <span class="tag">Hyrule</span>
+        <h1>San Andreas <br>Route System</h1>
+      </div>
 
-    <ul id="lista-pontos"></ul>
+      <section class="secao">
+        <h3>Rota</h3>
+        <div class="campo-grupo">
+          <label>Origem</label>
+          <select id="selectOrigem"></select>
+        </div>
+        <div class="campo-grupo">
+          <label>Destino</label>
+          <select id="selectDestino"></select>
+        </div>
+        
+        <button class="btn-primary" id="btnCalcular">Calcular rota</button>
+        <div id="resultado" class="resultado"></div>
+        <div class="sans" >
+                <img id="sans" src ="sans.png" alt="sans" width="200">
+                <audio id="sansMusic" src="sans-theme.mp3"></audio> 
+            </div>
+      </section>
 
-    <h3>Criar ponto</h3>
-    <input type="text" id="nomePonto" placeholder="Nome do local">
-    <input type="text" id="idPonto" placeholder="ID do ponto (ex: E)">
-    <input type="text" id="latPonto" placeholder="Latitude" readonly>
-    <input type="text" id="lngPonto" placeholder="Longitude" readonly>
-    <button onclick="criarPonto()">Adicionar ponto</button>
-    <p>Clique no mapa para escolher a posição do novo ponto.</p>
+      <section class="secao">
+        <h3>Pontos cadastrados</h3>
+        <ul id="lista-pontos"></ul>
+      </section>
 
-    <h3>Excluir ponto</h3>
-    <select id="removerPonto"></select>
-    <button onclick="excluirPonto()">Excluir ponto</button>
+      <section class="secao">
+        <h3>Conexões</h3>
+        <ul id="lista-conexoes"></ul>
+      </section>
 
-    <p id="resultado"></p>
+      <section class="secao">
+        <h3>Adicionar ponto</h3>
+        <div class="campo-grupo">
+          <label>Buscar lugar</label>
+          <div class="linha-form">
+            <input type="text" id="buscarEndereco" placeholder="Ex: Anápolis GO">
+            <button class="btn-mini" id="btnBuscar" type="button">Ir</button>
+          </div>
+        </div>
+        <div class="campo-grupo">
+          <label>Nome</label>
+          <input type="text" id="nomePonto" placeholder="Ex: Anápolis">
+        </div>
+        <div class="campo-grupo">
+          <label>ID</label>
+          <input type="text" id="idPonto" placeholder="Ex: E" maxlength="3">
+        </div>
+        <div class="campo-grupo">
+          <label>Latitude</label>
+          <input type="text" id="latPonto" placeholder="Clique no mapa ou busque" readonly>
+        </div>
+        <div class="campo-grupo">
+          <label>Longitude</label>
+          <input type="text" id="lngPonto" placeholder="Clique no mapa ou busque" readonly>
+        </div>
+        <p class="dica">Clica no mapa ou procura o lugar ali em cima.</p>
+        <button class="btn-primary" id="btnCriarPonto">Adicionar ponto</button>
+      </section>
+
+      <section class="secao">
+        <h3>Ligar pontos</h3>
+        <div class="campo-grupo">
+          <label>De</label>
+          <select id="conexaoOrigem"></select>
+        </div>
+        <div class="campo-grupo">
+          <label>Até</label>
+          <select id="conexaoDestino"></select>
+        </div>
+        <button class="btn-primary" id="btnCriarConexao">Criar conexão</button>
+      </section>
+      
+
+      <section class="secao">
+        <h3>Remover conexão</h3>
+        <div class="campo-grupo">
+          <label>Conexão</label>
+          <select id="removerConexao"></select>
+        </div>
+        <button class="btn-danger" id="btnExcluirConexao">Excluir conexão</button>
+      </section>
+      
+
+      <section class="secao">
+        <h3>Remover ponto</h3>
+        <div class="campo-grupo">
+          <label>Ponto</label>
+          <select id="removerPonto"></select>
+        </div>
+        <button class="btn-danger" id="btnExcluirPonto">Excluir ponto</button>
+      </section>
+
+      <section class="secao">
+        <h3>Se der ruim</h3>
+        <button class="btn-danger" id="btnResetar">Resetar tudo</button>
+      </section>
+    </aside>
+
+    <div id="map"></div>
   </div>
+  
 
-  <div id="map"></div>
-</div>
-    <div id="map" style="height:1300px;"></div>
-  <h2>Mapa com Rotas</h2>
-
-  <div id="map"></div>
-
-  <p id="resultado"></p>
-    <script src="index.js"></script>
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClItPnq8LnIJOK8lPZ_BJ-Y8ZzOkpSaLc&callback=initMap">
-  </script>
-
+  <script src="index.js"></script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClItPnq8LnIJOK8lPZ_BJ-Y8ZzOkpSaLc&callback=initMap&libraries=routes"></script>
 </body>
 </html>
